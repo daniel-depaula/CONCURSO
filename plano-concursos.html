@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plano de Concursos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style id="css">
+:root{
+  --bg:#F3F6F5;--surface:#FFFFFF;--ink:#14211F;--muted:#5A6966;--line:#D6DEDB;
+  --accent:#1F6F5C;--accent-soft:#E1EFEA;--amber:#B87A12;--amber-soft:#F6ECD9;
+  --ti:#1F6F5C;--port:#3B5BA5;--adm:#9A4B2F;--rlm:#7A5AA6;--eco:#8A6A12;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"Source Sans 3",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0E1614;--surface:#15201D;--ink:#E3ECE9;--muted:#9AABA6;--line:#26332F;
+    --accent:#52B596;--accent-soft:#1A332C;--amber:#E2AA4A;--amber-soft:#33291A;
+    --ti:#52B596;--port:#8AA5E8;--adm:#E0936F;--rlm:#B99BE3;--eco:#D9B45A;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0E1614;--surface:#15201D;--ink:#E3ECE9;--muted:#9AABA6;--line:#26332F;
+  --accent:#52B596;--accent-soft:#1A332C;--amber:#E2AA4A;--amber-soft:#33291A;
+  --ti:#52B596;--port:#8AA5E8;--adm:#E0936F;--rlm:#B99BE3;--eco:#D9B45A;
+}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px;padding-block:28px 56px;display:grid;gap:24px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;border-bottom:1px solid var(--line);padding-bottom:12px}
+.tab{font-family:var(--body);font-size:15px;font-weight:600;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:8px;padding:8px 14px;cursor:pointer;display:grid;gap:0;text-align:left;line-height:1.25}
+.tab small{font-weight:400;font-size:12px}
+.tab .tp{font-family:var(--mono);font-size:11px;font-weight:700}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+header{display:grid;gap:10px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,5vw,44px);line-height:1.05;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.lede{max-width:66ch;color:var(--muted);margin:0}
+.top{display:grid;grid-template-columns:1.2fr 1fr;gap:16px}
+@media (max-width:760px){.top{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px;display:grid;gap:12px;align-content:start;min-width:0}
+.panel h2{font-family:var(--display);font-weight:600;font-size:18px;margin:0}
+.panel p{margin:0}
+.weights{display:grid;gap:8px}
+.wrow{display:grid;grid-template-columns:minmax(120px,190px) 1fr 38px;align-items:center;gap:10px;font-size:14px}
+.bar{height:10px;background:var(--line);border-radius:5px;overflow:hidden}
+.bar span{display:block;height:100%;border-radius:5px}
+.num{font-family:var(--mono);font-size:13px;text-align:right;font-variant-numeric:tabular-nums}
+.progress-big{display:flex;align-items:baseline;gap:10px}
+.progress-big b{font-family:var(--mono);font-size:40px;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
+.progress-big small{color:var(--muted)}
+.pbar{height:12px;background:var(--accent-soft);border-radius:6px;overflow:hidden}
+.pbar span{display:block;height:100%;background:var(--accent);transition:width .3s}
+.status{font-size:13px;color:var(--muted);min-height:1.2em}
+.routine{font-size:14px;margin:0;padding-left:18px;display:grid;gap:4px}
+.legend{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em;padding:2px 7px;border-radius:4px;border:1px solid currentColor;white-space:nowrap}
+.c-ti{color:var(--ti)}.c-port{color:var(--port)}.c-adm{color:var(--adm)}.c-rlm{color:var(--rlm)}.c-sim{color:var(--amber)}.c-eco{color:var(--eco)}
+.facts{display:grid;gap:8px;margin:0}
+.facts div{display:grid;grid-template-columns:110px 1fr;gap:10px;font-size:14px}
+.facts dt{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.facts dd{margin:0}
+.tscroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:520px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700}
+td.money{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.target td:first-child{font-weight:700}
+.pill{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.05em;padding:1px 6px;border-radius:3px;background:var(--accent);color:var(--surface);margin-left:6px;vertical-align:1px}
+.weeks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:760px){.weeks{grid-template-columns:1fr}}
+.week{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;display:grid;gap:10px;align-content:start}
+.week.done{border-color:var(--accent)}
+.whead{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.wnum{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
+.wtitle{font-family:var(--display);font-weight:600;font-size:19px;margin:2px 0 0;line-height:1.2}
+.wcount{font-family:var(--mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.week.done .wcount{color:var(--accent);font-weight:700}
+ul.items{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.items label{display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start;cursor:pointer;padding:6px 8px;border-radius:6px}
+.items label:hover{background:var(--accent-soft)}
+.items input{width:17px;height:17px;margin:3px 0 0;accent-color:var(--accent);cursor:pointer}
+.items input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.itext{display:grid;gap:3px}
+.itext .t{font-size:15px}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.also{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.items input:checked + .itext .t{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line)}
+.note{background:var(--amber-soft);border:1px solid var(--line);border-radius:10px;padding:16px 20px;display:grid;gap:8px}
+.note h2{font-family:var(--display);font-weight:600;font-size:18px;margin:0}
+.note p{margin:0;max-width:75ch}
+.links{display:grid;gap:6px;margin:0;padding-left:18px}
+a{color:var(--accent)}
+@media (prefers-reduced-motion:reduce){.pbar span{transition:none}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script type="application/json" id="state">{"done":[]}</script>
+<script id="app-js">
+(function(){
+var UFBA_W=[
+ {d:"Semana 1 · 28/09 – 04/10",t:"Redes I: modelos e equipamentos",i:[
+  ["ti","Modelo OSI (7 camadas) e TCP/IP: função de cada camada"],
+  ["ti","Equipamentos: hub, switch, roteador, access point; domínio de colisão e broadcast"],
+  ["port","Interpretação de texto: ideia central e inferência",["p-interp"]],
+  ["adm","CF/88 art. 37: princípios LIMPE e regras de concurso público",["d-cf37"]],
+  ["ti","30 questões de redes (provas anteriores)"]]},
+ {d:"Semana 2 · 05/10 – 11/10",t:"Redes II: endereçamento IP",i:[
+  ["ti","IPv4: classes, máscara, CIDR e cálculo de sub-redes"],
+  ["ti","IPv6: formato, abreviação, tipos de endereço"],
+  ["ti","NAT, IPs privados, ARP e ICMP"],
+  ["port","Ortografia e acentuação"],
+  ["adm","Lei 8.112/90: provimento, posse, exercício, estágio probatório",["d-8112a"]]]},
+ {d:"Semana 3 · 12/10 – 18/10",t:"Redes III: protocolos e serviços",i:[
+  ["ti","HTTP/HTTPS, DNS, DHCP, FTP, SSH, SMTP/POP3/IMAP e suas portas"],
+  ["ti","TCP × UDP, handshake, VLAN, Wi-Fi (802.11) e cabeamento"],
+  ["rlm","Proposições, conectivos e tabela-verdade",["l-prop"]],
+  ["port","Classes de palavras"],
+  ["ti","40 questões de redes misturando os 3 blocos"]]},
+ {d:"Semana 4 · 19/10 – 25/10",t:"Sistemas operacionais",i:[
+  ["ti","Processos × threads, estados, escalonamento (FIFO, SJF, Round Robin)"],
+  ["ti","Gerência de memória: paginação, segmentação, memória virtual"],
+  ["ti","Deadlock, sistemas de arquivos, kernel"],
+  ["port","Concordância verbal e nominal",["p-concord"]],
+  ["adm","Lei 8.112/90: direitos, vantagens, licenças e afastamentos",["d-8112b"]]]},
+ {d:"Semana 5 · 26/10 – 01/11",t:"Linux",i:[
+  ["ti","Comandos essenciais: ls, cd, cp, mv, grep, find, ps, kill, chmod, chown"],
+  ["ti","Permissões (rwx, octal), usuários e grupos, estrutura de diretórios"],
+  ["ti","Shell script: variáveis, if, for, pipes e redirecionamento"],
+  ["rlm","Equivalências lógicas e negação de proposições",["l-equiv"]],
+  ["port","Regência e crase",["p-reg","p-crase"]]]},
+ {d:"Semana 6 · 02/11 – 08/11",t:"Windows e Windows Server",i:[
+  ["ti","Active Directory, domínio, GPO, contas e grupos"],
+  ["ti","NTFS × FAT32, permissões de compartilhamento"],
+  ["ti","PowerShell básico e ferramentas administrativas"],
+  ["port","Pontuação",["p-pont"]],
+  ["adm","Lei 8.112/90: deveres, proibições e penalidades",["d-8112c"]]]},
+ {d:"Semana 7 · 09/11 – 15/11",t:"Segurança da informação",i:[
+  ["ti","Malware (vírus, worm, trojan, ransomware) e ataques (phishing, DoS, MITM)",["t-malware"]],
+  ["ti","Criptografia simétrica × assimétrica, hash, assinatura e certificado digital",["t-cripto"]],
+  ["ti","Firewall, IDS/IPS, VPN, políticas de backup",["t-firewall"]],
+  ["adm","Lei 9.784/99: processo administrativo federal"],
+  ["ti","LGPD: conceitos básicos cobrados em TI",["t-lgpd"]]]},
+ {d:"Semana 8 · 16/11 – 22/11",t:"Arquitetura e virtualização",i:[
+  ["ti","CPU, memória (cache, RAM, ROM), barramentos, armazenamento e RAID"],
+  ["ti","Virtualização: hipervisor tipo 1 × tipo 2, VMs, snapshots"],
+  ["ti","Containers (Docker) e noções de nuvem (IaaS, PaaS, SaaS)"],
+  ["rlm","Argumentação lógica e diagramas de conjuntos"],
+  ["port","Coesão e coerência textual"]]},
+ {d:"Semana 9 · 23/11 – 29/11",t:"Banco de dados e programação",i:[
+  ["ti","Modelo relacional, chaves, normalização (1FN a 3FN)",["t-bdrel"]],
+  ["ti","SQL: SELECT, JOIN, GROUP BY, INSERT, UPDATE, DELETE, DDL",["t-sql"]],
+  ["ti","POO em Java, JVM, e HTML (tags e atributos)",["t-poo","t-html"]],
+  ["adm","Lei 8.429/92 (improbidade) e Lei 12.527/11 (acesso à informação)"],
+  ["port","Semântica: sinônimos, antônimos, sentido das palavras"]]},
+ {d:"Semana 10 · 30/11 – 06/12",t:"Algoritmos, engenharia de software e ITIL",i:[
+  ["ti","Pilha, fila, lista, árvore, grafo; ordenação e busca binária"],
+  ["ti","Ciclo de vida, Scrum e Kanban, requisitos e testes",["t-agil"]],
+  ["ti","ITIL 4: conceitos, práticas de incidente, problema e mudança"],
+  ["adm","Lei 14.133/21 (licitações) e Lei 11.091/05 (carreira TAE)"],
+  ["rlm","Contagem e probabilidade",["l-prob"]]]},
+ {d:"Semana 11 · 07/12 – 13/12",t:"Simulado 1 e revisão",i:[
+  ["sim","Simulado completo de 100 questões cronometrado (4h)"],
+  ["sim","Anotar erros por tema no caderno"],
+  ["ti","Revisar redes, SO e Linux (os de maior peso)"],
+  ["port","Revisar os 3 temas de Português com mais erros"],
+  ["adm","Revisar Lei 8.112/90 inteira (lei seca)"]]},
+ {d:"Semana 12 · 14/12 – 20/12",t:"Simulado 2 e ajuste final",i:[
+  ["sim","Simulado 2 completo, de preferência com questões da banca Instituto Avalia"],
+  ["sim","Comparar com o simulado 1 e reforçar os temas que não melhoraram"],
+  ["ti","Revisar segurança, BD e virtualização"],
+  ["rlm","Revisão geral de RLM com 30 questões"],
+  ["sim","Conferir o conteúdo do edital novo e ajustar o que faltar"]]}
+];
+var BACEN_G=[
+ {d:"Bloco 1 · base comum",t:"Português no estilo Cebraspe",i:[
+  ["port","Interpretação e reescrita de frases (a Cebraspe cobra muito)",["p-interp","p-reescrita"]],
+  ["port","Sintaxe: termos da oração, orações coordenadas e subordinadas"],
+  ["port","Pontuação, concordância e regência",["p-pont","p-concord","p-reg"]],
+  ["sim","50 itens certo/errado de Português para pegar o ritmo da banca"]]},
+ {d:"Bloco 2 · base comum",t:"Lógica e estatística",i:[
+  ["rlm","Proposições, equivalências e negações",["l-prop","l-equiv"]],
+  ["rlm","Estatística descritiva: média, mediana, moda, variância, desvio padrão"],
+  ["rlm","Probabilidade e análise combinatória",["l-prob"]],
+  ["rlm","Leitura de tabelas e gráficos"]]},
+ {d:"Bloco 3 · específico do Bacen",t:"Economia e sistema financeiro",i:[
+  ["eco","Microeconomia básica: oferta, demanda, elasticidade"],
+  ["eco","Macroeconomia: PIB, inflação, juros, câmbio"],
+  ["eco","Política monetária: Selic, Copom, metas de inflação, compulsório"],
+  ["eco","Sistema Financeiro Nacional: CMN, Bacen, CVM e papel de cada um",["e-sfn"]],
+  ["eco","Pix, Open Finance e o que o Bacen regula hoje"]]},
+ {d:"Bloco 4 · base comum",t:"Direito e ética",i:[
+  ["adm","Direito administrativo: princípios, atos, poderes e agentes públicos"],
+  ["adm","Lei 8.112/90 (regime dos servidores federais)",["d-8112a","d-8112b","d-8112c"]],
+  ["adm","Noções de direito constitucional: direitos fundamentais e administração pública",["d-cf37","d-dirfund"]]]},
+ {d:"Bloco 5 · reta final",t:"Técnica de prova e discursiva",i:[
+  ["sim","Treinar estratégia de certo/errado: um erro anula um acerto, então saber quando deixar em branco"],
+  ["sim","Redação sobre atualidades econômicas (uma por semana na reta final)"],
+  ["sim","Conferir o edital novo e ajustar este bloco ao conteúdo oficial"]]}
+];
+var BNB_G=[
+ {d:"Bloco 1 · base comum",t:"Português",i:[
+  ["port","Interpretação de texto",["p-interp"]],
+  ["port","Gramática: concordância, regência, crase, pontuação",["p-concord","p-reg","p-crase","p-pont"]],
+  ["sim","Provas anteriores de Português da Cesgranrio (banca de 2024)"]]},
+ {d:"Bloco 2 · muito cobrado em banco",t:"Matemática financeira",i:[
+  ["rlm","Porcentagem, juros simples e compostos"],
+  ["rlm","Taxas equivalentes, nominais e efetivas"],
+  ["rlm","Descontos e valor presente"],
+  ["rlm","Sistemas de amortização: SAC e Price"]]},
+ {d:"Bloco 3 · 40 das 60 questões em 2024",t:"Conhecimentos bancários",i:[
+  ["eco","Sistema Financeiro Nacional: CMN, Bacen, CVM, bancos",["e-sfn"]],
+  ["eco","Produtos e serviços bancários: contas, crédito, cartões, investimentos"],
+  ["eco","Mercado de capitais, câmbio e garantias"],
+  ["eco","Prevenção à lavagem de dinheiro e sigilo bancário"],
+  ["eco","Específico do BNB: FNE, Crediamigo e desenvolvimento regional do Nordeste"]]},
+ {d:"Bloco 4 · se for Especialista TI",t:"TI (Especialista Técnico)",i:[
+  ["ti","Desenvolvimento: POO, Java ou C#, APIs REST",["t-poo","t-rest"]],
+  ["ti","Banco de dados e SQL",["t-bdrel","t-sql"]],
+  ["ti","Segurança da informação e LGPD",["t-malware","t-cripto","t-firewall","t-lgpd"]],
+  ["ti","Engenharia de software, ágil e DevOps",["t-agil","t-devops"]]]},
+ {d:"Bloco 5 · reta final",t:"Simulados",i:[
+  ["sim","Simulado de 60 questões em 4h (formato Cesgranrio de 2024)"],
+  ["sim","Revisar o caderno de erros"],
+  ["sim","Conferir o edital novo e a banca escolhida"]]}
+];
+var TAG={ti:["TI","c-ti"],port:["PORTUGUÊS","c-port"],adm:["DIREITO / ADM.","c-adm"],rlm:["LÓGICA / MAT.","c-rlm"],eco:["ECONOMIA / BANCOS","c-eco"],sim:["SIMULADO","c-sim"]};
+var TABS=[
+ {id:"ufba",label:"UFBA",sub:"Técnico de TI",pre:"",groups:UFBA_W},
+ {id:"bacen",label:"Banco Central",sub:"Técnico",pre:"b",groups:BACEN_G},
+ {id:"bnb",label:"Banco do Nordeste",sub:"Analista Bancário",pre:"n",groups:BNB_G}
+];
+var state={done:[]};
+try{state=JSON.parse(document.getElementById("state").textContent)||state;}catch(e){}
+var done=new Set(state.done||[]);
+var ITEMS={},KEYTABS={},TABNAME={ufba:"UFBA",bacen:"Bacen",bnb:"BNB"};
+TABS.forEach(function(t){t.groups.forEach(function(g,gi){g.i.forEach(function(it,ii){var id=gid(t,gi,ii);var ks=it[2]||[id];ITEMS[id]={keys:ks,tab:t.id};ks.forEach(function(k){(KEYTABS[k]=KEYTABS[k]||{})[t.id]=1;});});});});
+Object.keys(ITEMS).forEach(function(id){var it=ITEMS[id];if(it.keys[0]!==id&&done.has(id)){it.keys.forEach(function(k){done.add(k);});done.delete(id);}});
+function isDone(id){return ITEMS[id].keys.every(function(k){return done.has(k);});}
+function alsoIn(id){var it=ITEMS[id],o={};it.keys.forEach(function(k){Object.keys(KEYTABS[k]).forEach(function(tb){if(tb!==it.tab)o[tb]=1;});});return Object.keys(o).map(function(tb){return TABNAME[tb];});}
+var mode="pending",artifactNs=null,timer=null,statusMsg="";
+var cur="ufba";
+try{var h0=(location.hash||"").slice(1);if(TABS.some(function(t){return t.id===h0;}))cur=h0;else{var sv=localStorage.getItem("plano-tab");if(sv&&TABS.some(function(t){return t.id===sv;}))cur=sv;}}catch(e){}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+function gid(tab,gi,ii){return tab.pre+gi+"-"+ii;}
+function stats(tab){var n=0,c=0;tab.groups.forEach(function(g,gi){g.i.forEach(function(_,ii){n++;if(isDone(gid(tab,gi,ii)))c++;});});return{n:n,c:c,p:n?Math.round(c/n*100):0};}
+function wrow(n,v,max,col){return '<div class="wrow"><span>'+n+'</span><div class="bar"><span style="width:'+Math.round(v/max*100)+'%;background:'+col+'"></span></div><span class="num">'+v+'</span></div>';}
+function progressPanel(tab){var s=stats(tab);
+  return '<section class="panel"><h2>Seu progresso</h2><div class="progress-big"><b>'+s.p+'%</b><small>'+s.c+' de '+s.n+' tarefas</small></div>'+
+  '<div class="pbar"><span style="width:'+s.p+'%"></span></div><div class="status" id="status">'+esc(statusMsg)+'</div>'+
+  '<div class="legend">'+Object.keys(TAG).map(function(k){return '<span class="chip '+TAG[k][1]+'">'+TAG[k][0]+'</span>';}).join("")+'</div></section>';}
+function groupsHTML(tab){var h='<div class="weeks">';
+  tab.groups.forEach(function(g,gi){var c=0;g.i.forEach(function(_,ii){if(isDone(gid(tab,gi,ii)))c++;});
+    h+='<section class="week'+(c===g.i.length?" done":"")+'"><div class="whead"><div><div class="wnum">'+esc(g.d)+'</div><h3 class="wtitle">'+esc(g.t)+'</h3></div><span class="wcount">'+c+'/'+g.i.length+'</span></div><ul class="items">';
+    g.i.forEach(function(it,ii){var id=gid(tab,gi,ii);
+      h+='<li><label for="t'+id+'"><input type="checkbox" id="t'+id+'" data-id="'+id+'"'+(isDone(id)?" checked":"")+'><span class="itext"><span class="t">'+esc(it[1])+'</span><span class="meta"><span class="chip '+TAG[it[0]][1]+'">'+TAG[it[0]][0]+'</span>'+(alsoIn(id).length?'<span class="also">↔ também em '+alsoIn(id).join(", ")+'</span>':'')+'</span></span></label></li>';});
+    h+='</ul></section>';});
+  return h+'</div>';}
+function facts(rows){return '<dl class="facts">'+rows.map(function(r){return '<div><dt>'+r[0]+'</dt><dd>'+r[1]+'</dd></div>';}).join("")+'</dl>';}
+function table(head,rows){return '<div class="tscroll"><table><thead><tr>'+head.map(function(x){return '<th>'+x+'</th>';}).join("")+'</tr></thead><tbody>'+rows.join("")+'</tbody></table></div>';}
+function linkNote(title,links,p){return '<section class="note"><h2>'+title+'</h2><ul class="links">'+links.map(function(l){return '<li><a href="'+l[0]+'" target="_blank" rel="noopener">'+l[1]+'</a></li>';}).join("")+'</ul>'+(p?'<p>'+p+'</p>':'')+'</section>';}
+function viewUFBA(tab){
+  return '<header><div class="eyebrow">Concurso UFBA · Técnico de Tecnologia da Informação · nível D</div><h1>Plano de estudos: 12 semanas</h1>'+
+  '<p class="lede">Baseado no último edital da UFBA (2022) e na prova de Técnico de TI de 2016. Banca nova: Instituto Avalia. 20 vagas de Técnico de TI. Vencimento inicial de R$ 3.181,39 + auxílio-alimentação de R$ 1.192.</p></header>'+
+  '<div class="top"><section class="panel"><h2>Peso de cada disciplina na prova</h2><div class="weights">'+
+  wrow("Conhecimentos de TI",50,50,"var(--ti)")+wrow("Português",20,50,"var(--port)")+wrow("Administração Pública",20,50,"var(--adm)")+wrow("Raciocínio Lógico",10,50,"var(--rlm)")+
+  '</div><h2>Rotina sugerida (~12h por semana)</h2><ul class="routine"><li>Seg a sex: 1h30 de TI + 30 min de Português, Adm. ou RLM</li><li>Sábado: 2h de questões da semana</li><li>Domingo: descanso ou atraso</li></ul></section>'+progressPanel(tab)+'</div>'+
+  groupsHTML(tab)+
+  linkNote("Material de apoio",[["https://concursos.ufba.br/sites/concursos.ufba.br/files/tecnicos/edital_no_05-2022_retificado_em_05.07.2023.pdf","Edital UFBA 005/2022 (referência de conteúdo)"],["https://concursos.ufba.br/sites/concursos.ufba.br/files/tecnicos/prova_tecnico_de_tecnologia_da_informacao.pdf","Prova anterior de Técnico de TI da UFBA"],["https://concursos.ufba.br/concursos-anteriores-tecnicos","Concursos anteriores de técnicos da UFBA"]],"Para questões, filtre por cargo \"Técnico de Tecnologia da Informação\" em universidades federais num banco de questões.");}
+function viewBacen(tab){
+  return '<header><div class="eyebrow">Banco Central do Brasil · 170 vagas autorizadas</div><h1>Bacen: edital até janeiro de 2027</h1>'+
+  '<p class="lede">O cargo de Técnico exige só ensino médio e paga cerca de R$ 8 mil, mas não é de TI: é apoio técnico e administrativo geral. A última prova foi de Analista, em 2024, pela Cebraspe (certo/errado). Os temas abaixo são uma estimativa até o edital sair.</p></header>'+
+  '<div class="top"><section class="panel"><h2>Situação</h2>'+facts([["Autorização","170 vagas autorizadas"],["Banca","Em contratação, prazo até 16/10/2026"],["Edital","Até 03/01/2027"],["Prova","Prevista para março de 2027"]])+
+  '<h2>Cargos</h2>'+table(["Cargo","Vagas","Requisito","Inicial"],[
+   '<tr class="target"><td>Técnico<span class="pill">SEU ALVO</span></td><td>50</td><td>Ensino médio</td><td class="money">≈ R$ 7,9–8,3 mil</td></tr>',
+   '<tr><td>Auditor (antigo Analista)</td><td>100</td><td>Superior em qualquer área</td><td class="money">R$ 20.924,80</td></tr>',
+   '<tr><td>Procurador</td><td>20</td><td>Direito + OAB</td><td class="money">R$ 22.905,79</td></tr>'])+
+  '<p style="font-size:13px;color:var(--muted)">Em 2024, o Analista teve área de TI com 70 itens específicos (engenharia de software, infraestrutura, ciência de dados, segurança). Vale quando você tiver o diploma.</p></section>'+progressPanel(tab)+'</div>'+
+  groupsHTML(tab)+
+  linkNote("Fontes",[["https://www.estrategiaconcursos.com.br/blog/concurso-bacen/","Estratégia Concursos: Concurso Bacen"],["https://blog.grancursosonline.com.br/concurso-bacen/","Gran: 170 vagas autorizadas"],["https://www.cebraspe.org.br/concursos/bcb_24","Cebraspe: concurso Bacen 2024"]],"Português, lógica e direito administrativo se repetem na UFBA, então o estudo de lá já adianta uma parte daqui.");}
+function viewBNB(tab){
+  return '<header><div class="eyebrow">Banco do Nordeste · edital em estudo</div><h1>BNB: cadastro zerado, novo edital cobrado</h1>'+
+  '<p class="lede">O cadastro de reserva do concurso de 2024 foi zerado e o banco está sondando bancas (Cesgranrio, Cebraspe e FGV). A previsão é de cerca de 500 vagas de Analista Bancário, de nível médio. Ainda não há data.</p></header>'+
+  '<div class="top"><section class="panel"><h2>Situação</h2>'+facts([["Banca","Não definida (Cesgranrio, Cebraspe ou FGV)"],["Edital","Em estudo, sem data"],["Última prova","2024, Cesgranrio: 60 questões em 4h"]])+
+  '<h2>Peso na prova de 2024 (Analista Bancário)</h2><div class="weights">'+wrow("Conhecimentos bancários",40,40,"var(--eco)")+wrow("Português",10,40,"var(--port)")+wrow("Matemática",10,40,"var(--rlm)")+'</div>'+
+  '<h2>Cargos</h2>'+table(["Cargo","Vagas","Requisito","Inicial"],[
+   '<tr class="target"><td>Analista Bancário I<span class="pill">SEU ALVO</span></td><td>≈ 500 (previsão)</td><td>Ensino médio</td><td class="money">R$ 3.788,16 + benefícios</td></tr>',
+   '<tr><td>Especialista Técnico em TI</td><td>90 (citado)</td><td>Superior em TI</td><td class="money">R$ 6.556,92; R$ 10.099,82 após 3 meses</td></tr>'])+
+  '</section>'+progressPanel(tab)+'</div>'+
+  groupsHTML(tab)+
+  linkNote("Fontes",[["https://www.estrategiaconcursos.com.br/blog/concurso-bnb/","Estratégia Concursos: Concurso BNB"],["https://www.editorasolucao.com.br/blog/concurso/bnb","Editora Solução: Concurso BNB"]],"As vagas são para cidades da área de atuação do banco, principalmente no Nordeste. Confira a lotação no edital.");}
+function render(){
+  var tab=TABS.filter(function(t){return t.id===cur;})[0];
+  var h='<div class="wrap"><nav class="tabs" role="tablist" aria-label="Concursos">';
+  TABS.forEach(function(t){var s=stats(t);h+='<button class="tab" role="tab" data-tab="'+t.id+'" aria-selected="'+(t.id===cur)+'">'+t.label+'<small>'+t.sub+' · <span class="tp">'+s.p+'%</span></small></button>';});
+  h+='</nav>';
+  h+=(cur==="bacen"?viewBacen(tab):cur==="bnb"?viewBNB(tab):viewUFBA(tab));
+  h+='</div>';
+  document.getElementById("app").innerHTML=h;
+}
+function setStatus(m){statusMsg=m;var el=document.getElementById("status");if(el)el.textContent=m;}
+function localSave(){try{localStorage.setItem("ufba-plano-done",JSON.stringify(Array.from(done)));}catch(e){}}
+function buildDoc(){
+  var css=document.getElementById("css").textContent;
+  var js=document.getElementById("app-js").textContent;
+  var json=JSON.stringify({done:Array.from(done)}).replace(/</g,"\\u003c");
+  return '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Plano de Concursos</title>'+
+  '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap">'+
+  '<style id="css">'+css+'<\/style></head><body><div id="app"></div><script type="application/json" id="state">'+json+'<\/script><script id="app-js">'+js+'<\/script></body></html>';
+}
+function schedule(){
+  if(mode!=="artifact"){localSave();return;}
+  setStatus("Salvando…");
+  clearTimeout(timer);
+  timer=setTimeout(function(){
+    artifactNs.publish(buildDoc()).then(function(){setStatus("Progresso salvo");},function(err){
+      var code=err&&err.code;
+      if(code==="conflict")return;
+      if(code==="not_granted"||code==="not_writer"){mode="local";localSave();setStatus("Sem permissão para salvar na página. Progresso guardado só neste navegador.");return;}
+      setStatus("Não foi possível salvar agora. Marque de novo em instantes.");
+    });
+  },1500);
+}
+document.addEventListener("click",function(e){
+  var b=e.target.closest&&e.target.closest("[data-tab]");if(!b)return;
+  cur=b.getAttribute("data-tab");
+  try{localStorage.setItem("plano-tab",cur);}catch(err){}
+  render();
+  var nb=document.querySelector('[data-tab="'+cur+'"]');if(nb)nb.focus();
+});
+document.addEventListener("change",function(e){
+  var t=e.target;if(!t||!t.dataset||!t.dataset.id)return;
+  ITEMS[t.dataset.id].keys.forEach(function(k){if(t.checked)done.add(k);else done.delete(k);});
+  var y=window.scrollY;render();window.scrollTo(0,y);
+  var el=document.getElementById("t"+t.dataset.id);if(el)el.focus({preventScroll:true});
+  schedule();
+});
+render();
+var use=window.claude&&window.claude.use;
+(use?window.claude.use("artifact"):Promise.resolve(null)).then(function(ns){
+  if(ns){artifactNs=ns;mode="artifact";setStatus("Marque as tarefas: o progresso fica salvo na página.");}
+  else{mode="local";
+    try{var s=JSON.parse(localStorage.getItem("ufba-plano-done")||"[]");s.forEach(function(x){done.add(x);});}catch(e){}
+    statusMsg="Progresso guardado neste navegador.";render();}
+},function(){mode="local";});
+})();
+</script>
+
+</body>
+</html>
