@@ -10,7 +10,7 @@
 :root{
   --bg:#F3F6F5;--surface:#FFFFFF;--ink:#14211F;--muted:#5A6966;--line:#D6DEDB;
   --accent:#1F6F5C;--accent-soft:#E1EFEA;--amber:#B87A12;--amber-soft:#F6ECD9;
-  --ti:#1F6F5C;--port:#3B5BA5;--adm:#9A4B2F;--rlm:#7A5AA6;--eco:#8A6A12;
+  --ti:#1F6F5C;--port:#3B5BA5;--adm:#9A4B2F;--rlm:#7A5AA6;--eco:#8A6A12;--inf:#2F7A9A;--esp:#1F6F5C;
   --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
   --body:"Source Sans 3",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -20,14 +20,14 @@
     color-scheme:dark;
     --bg:#0E1614;--surface:#15201D;--ink:#E3ECE9;--muted:#9AABA6;--line:#26332F;
     --accent:#52B596;--accent-soft:#1A332C;--amber:#E2AA4A;--amber-soft:#33291A;
-    --ti:#52B596;--port:#8AA5E8;--adm:#E0936F;--rlm:#B99BE3;--eco:#D9B45A;
+    --ti:#52B596;--port:#8AA5E8;--adm:#E0936F;--rlm:#B99BE3;--eco:#D9B45A;--inf:#6BB6D9;--esp:#52B596;
   }
 }
 :root[data-theme="dark"]{
   color-scheme:dark;
   --bg:#0E1614;--surface:#15201D;--ink:#E3ECE9;--muted:#9AABA6;--line:#26332F;
   --accent:#52B596;--accent-soft:#1A332C;--amber:#E2AA4A;--amber-soft:#33291A;
-  --ti:#52B596;--port:#8AA5E8;--adm:#E0936F;--rlm:#B99BE3;--eco:#D9B45A;
+  --ti:#52B596;--port:#8AA5E8;--adm:#E0936F;--rlm:#B99BE3;--eco:#D9B45A;--inf:#6BB6D9;--esp:#52B596;
 }
 :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box}
@@ -62,7 +62,7 @@ h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,5vw,44px);lin
 .routine{font-size:14px;margin:0;padding-left:18px;display:grid;gap:4px}
 .legend{display:flex;flex-wrap:wrap;gap:8px}
 .chip{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em;padding:2px 7px;border-radius:4px;border:1px solid currentColor;white-space:nowrap}
-.c-ti{color:var(--ti)}.c-port{color:var(--port)}.c-adm{color:var(--adm)}.c-rlm{color:var(--rlm)}.c-sim{color:var(--amber)}.c-eco{color:var(--eco)}
+.c-ti{color:var(--ti)}.c-port{color:var(--port)}.c-adm{color:var(--adm)}.c-rlm{color:var(--rlm)}.c-sim{color:var(--amber)}.c-eco{color:var(--eco)}.c-inf{color:var(--inf)}.c-esp{color:var(--esp)}
 .facts{display:grid;gap:8px;margin:0}
 .facts div{display:grid;grid-template-columns:110px 1fr;gap:10px;font-size:14px}
 .facts dt{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:3px}
@@ -131,78 +131,78 @@ a{color:var(--accent)}
 <script id="app-js">
 (function(){
 var UFBA_W=[
- {d:"Semana 1 · 28/09 – 04/10",t:"Redes I: modelos e equipamentos",i:[
-  ["ti","Modelo OSI (7 camadas) e TCP/IP: função de cada camada"],
-  ["ti","Equipamentos: hub, switch, roteador, access point; domínio de colisão e broadcast"],
-  ["port","Interpretação de texto: ideia central e inferência",["p-interp"]],
-  ["adm","CF/88 art. 37: princípios LIMPE e regras de concurso público",["d-cf37"]],
-  ["ti","30 questões de redes (provas anteriores)"]]},
- {d:"Semana 2 · 05/10 – 11/10",t:"Redes II: endereçamento IP",i:[
-  ["ti","IPv4: classes, máscara, CIDR e cálculo de sub-redes"],
-  ["ti","IPv6: formato, abreviação, tipos de endereço"],
-  ["ti","NAT, IPs privados, ARP e ICMP"],
-  ["port","Ortografia e acentuação"],
-  ["adm","Lei 8.112/90: provimento, posse, exercício, estágio probatório",["d-8112a"]]]},
- {d:"Semana 3 · 12/10 – 18/10",t:"Redes III: protocolos e serviços",i:[
-  ["ti","HTTP/HTTPS, DNS, DHCP, FTP, SSH, SMTP/POP3/IMAP e suas portas"],
-  ["ti","TCP × UDP, handshake, VLAN, Wi-Fi (802.11) e cabeamento"],
-  ["rlm","Proposições, conectivos e tabela-verdade",["l-prop"]],
-  ["port","Classes de palavras"],
-  ["ti","40 questões de redes misturando os 3 blocos"]]},
- {d:"Semana 4 · 19/10 – 25/10",t:"Sistemas operacionais",i:[
-  ["ti","Processos × threads, estados, escalonamento (FIFO, SJF, Round Robin)"],
-  ["ti","Gerência de memória: paginação, segmentação, memória virtual"],
-  ["ti","Deadlock, sistemas de arquivos, kernel"],
+ {d:"Semana 1 · 28/09 – 04/10",t:"Estado, governo e organização da Adm. Pública",i:[
+  ["esp","Estado, governo e Adm. Pública: conceitos, elementos, poderes, fins e princípios",["e-estado"]],
+  ["esp","Organização administrativa da União: administração direta e indireta",["e-orgadm"]],
+  ["port","Compreensão e interpretação de texto: ideia central e inferência",["p-interp"]],
+  ["adm","CF/88 art. 37: princípios LIMPE e disposições gerais da Adm. Pública",["d-cf37"]],
+  ["inf","Conceitos básicos de informática e tecnologias da informação"]]},
+ {d:"Semana 2 · 05/10 – 11/10",t:"Agentes e poderes administrativos",i:[
+  ["esp","Agentes públicos: espécies, classificação, poderes, deveres e prerrogativas; cargo, emprego e função",["e-agentes"]],
+  ["esp","Poderes administrativos: hierárquico, disciplinar, regulamentar, de polícia; uso e abuso do poder",["e-poderes"]],
+  ["port","Ortografia oficial e acentuação gráfica"],
+  ["adm","Lei 8.112/1990: provimento, vacância, remoção, redistribuição, substituição",["d-8112a"]],
+  ["inf","Windows 10+: utilização, configurações básicas e gerenciamento de arquivos"]]},
+ {d:"Semana 3 · 12/10 – 18/10",t:"Serviços públicos e controle da Administração",i:[
+  ["esp","Serviços públicos: conceito, classificação, regulamentação, delegação (concessão, permissão, autorização)",["e-servpub"]],
+  ["esp","Controle e responsabilização da Administração: administrativo, judicial, legislativo e responsabilidade civil do Estado",["e-controle"]],
+  ["port","Morfossintaxe: classes de palavras, formação e estrutura das palavras"],
   ["port","Concordância verbal e nominal",["p-concord"]],
-  ["adm","Lei 8.112/90: direitos, vantagens, licenças e afastamentos",["d-8112b"]]]},
- {d:"Semana 5 · 26/10 – 01/11",t:"Linux",i:[
-  ["ti","Comandos essenciais: ls, cd, cp, mv, grep, find, ps, kill, chmod, chown"],
-  ["ti","Permissões (rwx, octal), usuários e grupos, estrutura de diretórios"],
-  ["ti","Shell script: variáveis, if, for, pipes e redirecionamento"],
-  ["rlm","Equivalências lógicas e negação de proposições",["l-equiv"]],
-  ["port","Regência e crase",["p-reg","p-crase"]]]},
- {d:"Semana 6 · 02/11 – 08/11",t:"Windows e Windows Server",i:[
-  ["ti","Active Directory, domínio, GPO, contas e grupos"],
-  ["ti","NTFS × FAT32, permissões de compartilhamento"],
-  ["ti","PowerShell básico e ferramentas administrativas"],
-  ["port","Pontuação",["p-pont"]],
-  ["adm","Lei 8.112/90: deveres, proibições e penalidades",["d-8112c"]]]},
- {d:"Semana 7 · 09/11 – 15/11",t:"Segurança da informação",i:[
-  ["ti","Malware (vírus, worm, trojan, ransomware) e ataques (phishing, DoS, MITM)",["t-malware"]],
-  ["ti","Criptografia simétrica × assimétrica, hash, assinatura e certificado digital",["t-cripto"]],
-  ["ti","Firewall, IDS/IPS, VPN, políticas de backup",["t-firewall"]],
-  ["adm","Lei 9.784/99: processo administrativo federal"],
-  ["ti","LGPD: conceitos básicos cobrados em TI",["t-lgpd"]]]},
- {d:"Semana 8 · 16/11 – 22/11",t:"Arquitetura e virtualização",i:[
-  ["ti","CPU, memória (cache, RAM, ROM), barramentos, armazenamento e RAID"],
-  ["ti","Virtualização: hipervisor tipo 1 × tipo 2, VMs, snapshots"],
-  ["ti","Containers (Docker) e noções de nuvem (IaaS, PaaS, SaaS)"],
-  ["rlm","Argumentação lógica e diagramas de conjuntos"],
-  ["port","Coesão e coerência textual"]]},
- {d:"Semana 9 · 23/11 – 29/11",t:"Banco de dados e programação",i:[
-  ["ti","Modelo relacional, chaves, normalização (1FN a 3FN)",["t-bdrel"]],
-  ["ti","SQL: SELECT, JOIN, GROUP BY, INSERT, UPDATE, DELETE, DDL",["t-sql"]],
-  ["ti","POO em Java, JVM, e HTML (tags e atributos)",["t-poo","t-html"]],
-  ["adm","Lei 8.429/92 (improbidade) e Lei 12.527/11 (acesso à informação)"],
-  ["port","Semântica: sinônimos, antônimos, sentido das palavras"]]},
- {d:"Semana 10 · 30/11 – 06/12",t:"Algoritmos, engenharia de software e ITIL",i:[
-  ["ti","Pilha, fila, lista, árvore, grafo; ordenação e busca binária"],
-  ["ti","Ciclo de vida, Scrum e Kanban, requisitos e testes",["t-agil"]],
-  ["ti","ITIL 4: conceitos, práticas de incidente, problema e mudança"],
-  ["adm","Lei 14.133/21 (licitações) e Lei 11.091/05 (carreira TAE)"],
-  ["rlm","Contagem e probabilidade",["l-prob"]]]},
+  ["inf","Editores de escritório: Word, Excel e PowerPoint (Office 365/2013/2010)"]]},
+ {d:"Semana 4 · 19/10 – 25/10",t:"Lei 14.133/2021: Licitações (parte 1)",i:[
+  ["esp","Licitações: conceito, objeto, finalidades, princípios e obrigatoriedade",["e-lic1"]],
+  ["esp","Modalidades de licitação e critérios de julgamento",["e-lic2"]],
+  ["port","Regência verbal e nominal; crase",["p-reg","p-crase"]],
+  ["adm","Lei 8.112/1990: direitos, vantagens, licenças e afastamentos",["d-8112b"]],
+  ["inf","Correio eletrônico: Outlook, envio/recebimento, anexos e organização de mensagens"]]},
+ {d:"Semana 5 · 26/10 – 01/11",t:"Lei 14.133/2021: Licitações (parte 2)",i:[
+  ["esp","Dispensa, inexigibilidade e vedação de licitação",["e-lic3"]],
+  ["esp","Fases, revogação, invalidação, desistência e controle da licitação",["e-lic4"]],
+  ["port","Pontuação e seus efeitos de sentido"],
+  ["adm","Lei 8.112/1990: deveres, proibições, regime disciplinar e penalidades",["d-8112c"]],
+  ["inf","Internet e intranet; navegadores (Chrome, Firefox); ferramentas de busca"]]},
+ {d:"Semana 6 · 02/11 – 08/11",t:"Noções de Administração Pública",i:[
+  ["esp","Características das organizações formais: estrutura, departamentalização",["e-org1"]],
+  ["esp","Processo organizacional: planejamento, direção, controle e avaliação"],
+  ["esp","Gestão de processos, gestão da qualidade e gestão de projetos",["e-org2"]],
+  ["port","Semântica: denotação, conotação, sinonímia, figuras de linguagem"],
+  ["adm","Ética no Serviço Público: Decreto 1.171/1994 e Decreto 6.029/2007",["d-etica"]]]},
+ {d:"Semana 7 · 09/11 – 15/11",t:"Noções de Gestão de Pessoas",i:[
+  ["esp","Gestão de pessoas: conceitos, importância, relação com outros sistemas da organização",["e-gp1"]],
+  ["esp","Função do órgão de gestão de pessoas: atribuições, objetivos, políticas",["e-gp2"]],
+  ["esp","Comportamento organizacional: indivíduo/organização, motivação, liderança",["e-gp3"]],
+  ["adm","Lei 9.784/1999: processo administrativo federal",["d-9784"]],
+  ["adm","Lei 8.429/1992: improbidade administrativa",["d-8429"]]]},
+ {d:"Semana 8 · 16/11 – 22/11",t:"Recursos materiais e acesso à informação",i:[
+  ["esp","Administração de Recursos Materiais: classificação, tipos, gestão de estoques",["e-rm1"]],
+  ["esp","Compras, modalidades de compra, cadastro de fornecedores",["e-rm2"]],
+  ["esp","Recebimento, armazenagem, entrada e conferência de materiais",["e-rm3"]],
+  ["adm","LAI (Lei 12.527/2011 e Decreto 7.724/2012): acesso à informação",["d-lai"]],
+  ["adm","LGPD (Lei 13.709/2018): fundamentos e princípios",["d-lgpd"]]]},
+ {d:"Semana 9 · 23/11 – 29/11",t:"Arquivologia",i:[
+  ["esp","Conceitos fundamentais de arquivologia; gerenciamento da informação e gestão de documentos",["e-arq1"]],
+  ["esp","Arquivos correntes, intermediários e permanentes; protocolos",["e-arq2"]],
+  ["esp","Avaliação de documentos, tipologias documentais e suportes físicos",["e-arq3"]],
+  ["esp","Microfilmagem, automação, preservação e conservação de documentos",["e-arq4"]],
+  ["adm","Lei 8.159/1991: política nacional de arquivos públicos e privados",["d-8159"]]]},
+ {d:"Semana 10 · 30/11 – 06/12",t:"Atendimento ao público e governo digital",i:[
+  ["esp","Qualidade no atendimento ao público: comunicabilidade, apresentação, cortesia, presteza",["e-at1"]],
+  ["esp","Trabalho em equipe, comportamento receptivo e defensivo, empatia",["e-at2"]],
+  ["esp","Postura profissional, relações interpessoais e comunicação",["e-at3"]],
+  ["adm","Lei 14.129/2021 (governo digital) e Decreto 9.830/2019 (governança)",["d-govdigital"]],
+  ["adm","Redação oficial: Manual de Redação da Presidência da República (3ª ed.)",["d-redoficial"]]]},
  {d:"Semana 11 · 07/12 – 13/12",t:"Simulado 1 e revisão",i:[
   ["sim","Simulado completo de 100 questões cronometrado (4h)"],
   ["sim","Anotar erros por tema no caderno"],
-  ["ti","Revisar redes, SO e Linux (os de maior peso)"],
+  ["esp","Revisar Licitações (Lei 14.133/21) e Noções de Administração Pública (maior peso)"],
   ["port","Revisar os 3 temas de Português com mais erros"],
-  ["adm","Revisar Lei 8.112/90 inteira (lei seca)"]]},
+  ["adm","Revisar Lei 8.112/1990 inteira (lei seca)"]]},
  {d:"Semana 12 · 14/12 – 20/12",t:"Simulado 2 e ajuste final",i:[
   ["sim","Simulado 2 completo, de preferência com questões da banca Instituto Avalia"],
   ["sim","Comparar com o simulado 1 e reforçar os temas que não melhoraram"],
-  ["ti","Revisar segurança, BD e virtualização"],
-  ["rlm","Revisão geral de RLM com 30 questões"],
-  ["sim","Conferir o conteúdo do edital novo e ajustar o que faltar"]]}
+  ["esp","Revisar Arquivologia, Gestão de Pessoas e Recursos Materiais"],
+  ["inf","Revisão geral de Noções de Informática com 20 questões"],
+  ["sim","Conferir o Estatuto e Regimento Geral da UFBA e o conteúdo do edital"]]}
 ];
 var BACEN_G=[
  {d:"Bloco 1 · base comum",t:"Português no estilo Cebraspe",i:[
@@ -256,9 +256,9 @@ var BNB_G=[
   ["sim","Revisar o caderno de erros"],
   ["sim","Conferir o edital novo e a banca escolhida"]]}
 ];
-var TAG={ti:["TI","c-ti"],port:["PORTUGUÊS","c-port"],adm:["DIREITO / ADM.","c-adm"],rlm:["LÓGICA / MAT.","c-rlm"],eco:["ECONOMIA / BANCOS","c-eco"],sim:["SIMULADO","c-sim"]};
+var TAG={ti:["TI","c-ti"],port:["PORTUGUÊS","c-port"],adm:["DIREITO / ADM.","c-adm"],rlm:["LÓGICA / MAT.","c-rlm"],eco:["ECONOMIA / BANCOS","c-eco"],sim:["SIMULADO","c-sim"],inf:["INFORMÁTICA","c-inf"],esp:["ESPECÍFICOS ADM.","c-esp"]};
 var TABS=[
- {id:"ufba",label:"UFBA",sub:"Técnico de TI",pre:"",groups:UFBA_W},
+ {id:"ufba",label:"UFBA",sub:"Assistente em Administração",pre:"",groups:UFBA_W},
  {id:"bacen",label:"Banco Central",sub:"Técnico",pre:"b",groups:BACEN_G},
  {id:"bnb",label:"Banco do Nordeste",sub:"Analista Bancário",pre:"n",groups:BNB_G}
 ];
@@ -293,13 +293,13 @@ function facts(rows){return '<dl class="facts">'+rows.map(function(r){return '<d
 function table(head,rows){return '<div class="tscroll"><table><thead><tr>'+head.map(function(x){return '<th>'+x+'</th>';}).join("")+'</tr></thead><tbody>'+rows.join("")+'</tbody></table></div>';}
 function linkNote(title,links,p){return '<section class="note"><h2>'+title+'</h2><ul class="links">'+links.map(function(l){return '<li><a href="'+l[0]+'" target="_blank" rel="noopener">'+l[1]+'</a></li>';}).join("")+'</ul>'+(p?'<p>'+p+'</p>':'')+'</section>';}
 function viewUFBA(tab){
-  return '<header><div class="eyebrow">Concurso UFBA · Técnico de Tecnologia da Informação · nível D</div><h1>Plano de estudos: 12 semanas</h1>'+
-  '<p class="lede">Baseado no último edital da UFBA (2022) e na prova de Técnico de TI de 2016. Banca nova: Instituto Avalia. 20 vagas de Técnico de TI. Vencimento inicial de R$ 3.181,39 + auxílio-alimentação de R$ 1.192.</p></header>'+
+  return '<header><div class="eyebrow">Concurso UFBA nº 007/2026 · Assistente em Administração · nível D · Bloco 1</div><h1>Plano de estudos: 12 semanas</h1>'+
+  '<p class="lede">Baseado no Edital nº 7/2026 da UFBA (banca Instituto Avalia). 94 vagas de Assistente em Administração — bem mais que as 4 do Técnico de TI. Vencimento inicial de R$ 3.181,39 + auxílio-alimentação de R$ 1.192. Requisito: apenas Ensino Médio completo, sem curso técnico específico.</p></header>'+
   '<div class="top"><section class="panel"><h2>Peso de cada disciplina na prova</h2><div class="weights">'+
-  wrow("Conhecimentos de TI",50,50,"var(--ti)")+wrow("Português",20,50,"var(--port)")+wrow("Administração Pública",20,50,"var(--adm)")+wrow("Raciocínio Lógico",10,50,"var(--rlm)")+
-  '</div><h2>Rotina sugerida (~12h por semana)</h2><ul class="routine"><li>Seg a sex: 1h30 de TI + 30 min de Português, Adm. ou RLM</li><li>Sábado: 2h de questões da semana</li><li>Domingo: descanso ou atraso</li></ul></section>'+progressPanel(tab)+'</div>'+
+  wrow("Conhecimentos Específicos",50,50,"var(--esp)")+wrow("Português",20,50,"var(--port)")+wrow("Administração Pública",20,50,"var(--adm)")+wrow("Noções de Informática",10,50,"var(--inf)")+
+  '</div><h2>Rotina sugerida (~12h por semana)</h2><ul class="routine"><li>Seg a sex: 1h30 de Conhecimentos Específicos + 30 min de Português, Adm. Pública ou Informática</li><li>Sábado: 2h de questões da semana</li><li>Domingo: descanso ou atraso</li></ul></section>'+progressPanel(tab)+'</div>'+
   groupsHTML(tab)+
-  linkNote("Material de apoio",[["https://concursos.ufba.br/sites/concursos.ufba.br/files/tecnicos/edital_no_05-2022_retificado_em_05.07.2023.pdf","Edital UFBA 005/2022 (referência de conteúdo)"],["https://concursos.ufba.br/sites/concursos.ufba.br/files/tecnicos/prova_tecnico_de_tecnologia_da_informacao.pdf","Prova anterior de Técnico de TI da UFBA"],["https://concursos.ufba.br/concursos-anteriores-tecnicos","Concursos anteriores de técnicos da UFBA"]],"Para questões, filtre por cargo \"Técnico de Tecnologia da Informação\" em universidades federais num banco de questões.");}
+  linkNote("Material de apoio",[["https://concursos.ufba.br","Portal de concursos da UFBA (edital nº 007/2026 e retificações)"],["https://www.pciconcursos.com.br/provas/download/assistente-em-administracao-ufba-idecan-2022","Prova anterior de Assistente em Administração da UFBA (IDECAN, 2022)"],["https://www.qconcursos.com/questoes-de-concursos/provas/idecan-2022-ufba-assistente-em-administracao","Questões da prova de 2022 no QConcursos"]],"O conteúdo específico de Assistente em Administração deste edital cobre principalmente Lei 14.133/2021 (licitações), Noções de Administração Pública, Gestão de Pessoas, Recursos Materiais, Arquivologia e Atendimento ao Público — provas de editais anteriores (2022, banca IDECAN) ainda servem para treinar, mas a redação de cada item pode variar.");}
 function viewBacen(tab){
   return '<header><div class="eyebrow">Banco Central do Brasil · 170 vagas autorizadas</div><h1>Bacen: edital até janeiro de 2027</h1>'+
   '<p class="lede">O cargo de Técnico exige só ensino médio e paga cerca de R$ 8 mil, mas não é de TI: é apoio técnico e administrativo geral. A última prova foi de Analista, em 2024, pela Cebraspe (certo/errado). Os temas abaixo são uma estimativa até o edital sair.</p></header>'+
