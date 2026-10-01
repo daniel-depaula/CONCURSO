@@ -131,78 +131,81 @@ a{color:var(--accent)}
 <script id="app-js">
 (function(){
 var UFBA_TI_W=[
- {d:"Semana 1 · 28/09 – 04/10",t:"Redes I: modelos e equipamentos",i:[
+ {d:"Semana 1 · 28/09 – 04/10",t:"Redes I: modelos, equipamentos e meios",i:[
   ["ti","Modelo OSI (7 camadas) e TCP/IP: função de cada camada"],
-  ["ti","Equipamentos: hub, switch, roteador, access point; domínio de colisão e broadcast"],
+  ["ti","Equipamentos (hub, switch, bridge, repetidor, roteador, gateway), meios de transmissão, cabeamento e LAN/MAN/WAN"],
   ["port","Interpretação de texto: ideia central e inferência",["p-interp"]],
   ["adm","CF/88 art. 37: princípios LIMPE e regras de concurso público",["d-cf37"]],
   ["ti","30 questões de redes (provas anteriores)"]]},
- {d:"Semana 2 · 05/10 – 11/10",t:"Redes II: endereçamento IP",i:[
-  ["ti","IPv4: classes, máscara, CIDR e cálculo de sub-redes"],
-  ["ti","IPv6: formato, abreviação, tipos de endereço"],
-  ["ti","NAT, IPs privados, ARP e ICMP"],
-  ["port","Ortografia e acentuação"],
-  ["adm","Lei 8.112/90: provimento, posse, exercício, estágio probatório",["d-8112a"]]]},
- {d:"Semana 3 · 12/10 – 18/10",t:"Redes III: protocolos e serviços",i:[
-  ["ti","HTTP/HTTPS, DNS, DHCP, FTP, SSH, SMTP/POP3/IMAP e suas portas"],
-  ["ti","TCP × UDP, handshake, VLAN, Wi-Fi (802.11) e cabeamento"],
+ {d:"Semana 2 · 05/10 – 11/10",t:"Redes II: endereçamento, VLAN e Wi-Fi",i:[
+  ["ti","IPv4: máscara, CIDR, sub-redes, NAT e IPs privados"],
+  ["ti","IPv6: formato, abreviação, tipos de endereço e roteamento IP"],
+  ["ti","VLAN e redes sem fio 802.11a/b/g/n/ac"],
   ["rlm","Proposições, conectivos e tabela-verdade",["l-prop"]],
-  ["port","Classes de palavras"],
-  ["ti","40 questões de redes misturando os 3 blocos"]]},
- {d:"Semana 4 · 19/10 – 25/10",t:"Sistemas operacionais",i:[
-  ["ti","Processos × threads, estados, escalonamento (FIFO, SJF, Round Robin)"],
-  ["ti","Gerência de memória: paginação, segmentação, memória virtual"],
-  ["ti","Deadlock, sistemas de arquivos, kernel"],
+  ["adm","Lei 8.112/90: provimento, posse, exercício, estágio probatório",["d-8112a"]]]},
+ {d:"Semana 3 · 12/10 – 18/10",t:"Redes III: serviços e roteamento",i:[
+  ["ti","Serviços: DNS e registros, DHCP, e-mail (SMTP/POP3/IMAP), Web, Proxy; arquitetura cliente/servidor"],
+  ["ti","Roteamento OSPF e BGP, MPLS e VoIP"],
+  ["rlm","Equivalências lógicas, Leis de Morgan e negação",["l-equiv"]],
+  ["port","Ortografia, acentuação e Redação Oficial (Manual da Presidência, 3ª ed.)"],
+  ["port","Redação 1: dissertação de 20 a 30 linhas, corrigida pelos 4 critérios do edital"]]},
+ {d:"Semana 4 · 19/10 – 25/10",t:"Linux, Windows Server e diretório",i:[
+  ["ti","Linux Debian e SUSE: comandos, permissões, usuários e Shell Script (Bash)"],
+  ["ti","Windows Server 2012, Active Directory e PowerShell"],
+  ["ti","LDAP: OpenLDAP × AD; noções de Groovy"],
   ["port","Concordância verbal e nominal",["p-concord"]],
   ["adm","Lei 8.112/90: direitos, vantagens, licenças e afastamentos",["d-8112b"]]]},
- {d:"Semana 5 · 26/10 – 01/11",t:"Linux",i:[
-  ["ti","Comandos essenciais: ls, cd, cp, mv, grep, find, ps, kill, chmod, chown"],
-  ["ti","Permissões (rwx, octal), usuários e grupos, estrutura de diretórios"],
-  ["ti","Shell script: variáveis, if, for, pipes e redirecionamento"],
-  ["rlm","Equivalências lógicas e negação de proposições",["l-equiv"]],
+ {d:"Semana 5 · 26/10 – 01/11",t:"Servidores e alta disponibilidade",i:[
+  ["ti","Servidores web Apache e IIS"],
+  ["ti","Servidores de aplicação JEE: JBoss e Tomcat (instalação, segurança, tuning, mensageria)"],
+  ["ti","Cluster, grid, balanceamento de carga, failover e replicação; monitoramento e detecção de problemas"],
+  ["rlm","Quantificadores, argumentação lógica e diagramas de Venn"],
   ["port","Regência e crase",["p-reg","p-crase"]]]},
- {d:"Semana 6 · 02/11 – 08/11",t:"Windows e Windows Server",i:[
-  ["ti","Active Directory, domínio, GPO, contas e grupos"],
-  ["ti","NTFS × FAT32, permissões de compartilhamento"],
-  ["ti","PowerShell básico e ferramentas administrativas"],
+ {d:"Semana 6 · 02/11 – 08/11",t:"Armazenamento e virtualização",i:[
+  ["ti","Sistemas de arquivos NTFS, FAT12/16/32, EXT2/3/4 e LVM"],
+  ["ti","RAID, SAN, NAS, multipathing; backup e deduplicação; CIFS/SMB e NFS"],
+  ["ti","Virtualização (VMware, KVM, emuladores, paravirtualização), nuvem e DevOps"],
+  ["adm","Lei 8.112/90: deveres, proibições e penalidades",["d-8112c"]],
+  ["port","Redação 2: dissertação cronometrada"]]},
+ {d:"Semana 7 · 09/11 – 15/11",t:"Segurança I: ameaças e defesas",i:[
+  ["ti","Malwares: trojan, adware, spyware, backdoor, keylogger, worm, bot, botnet, rootkit",["t-malware"]],
+  ["ti","Ataques: DoS/DDoS, IP spoofing, port scan, session hijacking, buffer overflow, SQL Injection, XSS, spear phishing, APT"],
+  ["ti","Criptografia simétrica e assimétrica, algoritmos, assinatura, certificação digital e OpenSSL",["t-cripto"]],
+  ["ti","Firewall, IDS/IPS, NAT, VPN, proxy, sniffers e traffic shaping",["t-firewall"]],
   ["port","Pontuação",["p-pont"]],
-  ["adm","Lei 8.112/90: deveres, proibições e penalidades",["d-8112c"]]]},
- {d:"Semana 7 · 09/11 – 15/11",t:"Segurança da informação",i:[
-  ["ti","Malware (vírus, worm, trojan, ransomware) e ataques (phishing, DoS, MITM)",["t-malware"]],
-  ["ti","Criptografia simétrica × assimétrica, hash, assinatura e certificado digital",["t-cripto"]],
-  ["ti","Firewall, IDS/IPS, VPN, políticas de backup",["t-firewall"]],
-  ["adm","Lei 9.784/99: processo administrativo federal"],
-  ["ti","LGPD: conceitos básicos cobrados em TI",["t-lgpd"]]]},
- {d:"Semana 8 · 16/11 – 22/11",t:"Arquitetura e virtualização",i:[
-  ["ti","CPU, memória (cache, RAM, ROM), barramentos, armazenamento e RAID"],
-  ["ti","Virtualização: hipervisor tipo 1 × tipo 2, VMs, snapshots"],
-  ["ti","Containers (Docker) e noções de nuvem (IaaS, PaaS, SaaS)"],
-  ["rlm","Argumentação lógica e diagramas de conjuntos"],
-  ["port","Coesão e coerência textual"]]},
- {d:"Semana 9 · 23/11 – 29/11",t:"Banco de dados e programação",i:[
-  ["ti","Modelo relacional, chaves, normalização (1FN a 3FN)",["t-bdrel"]],
-  ["ti","SQL: SELECT, JOIN, GROUP BY, INSERT, UPDATE, DELETE, DDL",["t-sql"]],
-  ["ti","POO em Java, JVM, e HTML (tags e atributos)",["t-poo","t-html"]],
-  ["adm","Lei 8.429/92 (improbidade) e Lei 12.527/11 (acesso à informação)"],
-  ["port","Semântica: sinônimos, antônimos, sentido das palavras"]]},
- {d:"Semana 10 · 30/11 – 06/12",t:"Algoritmos, engenharia de software e ITIL",i:[
-  ["ti","Pilha, fila, lista, árvore, grafo; ordenação e busca binária"],
-  ["ti","Ciclo de vida, Scrum e Kanban, requisitos e testes",["t-agil"]],
-  ["ti","ITIL 4: conceitos, práticas de incidente, problema e mudança"],
-  ["adm","Lei 14.133/21 (licitações) e Lei 11.091/05 (carreira TAE)"],
-  ["rlm","Contagem e probabilidade",["l-prob"]]]},
+  ["adm","Lei 9.784/99: processo administrativo federal"]]},
+ {d:"Semana 8 · 16/11 – 22/11",t:"Segurança II e fundamentos de computação",i:[
+  ["ti","ISO 27001 a 27005, SGSI, política de segurança, riscos, ativos, continuidade e incidentes"],
+  ["ti","Protocolos (HTTP/S, TLS, LDAP v3, ICAP, NTP, EAP/PEAP, SNMP) e cartilha do CERT.br"],
+  ["ti","Arquitetura de computadores, E/S, processadores multicore e princípios de SO"],
+  ["rlm","Bases numéricas, álgebra de Boole e portas lógicas"],
+  ["adm","Improbidade (Lei 8.429), LAI (Lei 12.527) e LGPD",["t-lgpd"]]]},
+ {d:"Semana 9 · 23/11 – 29/11",t:"Banco de dados e engenharia de software",i:[
+  ["ti","Modelo relacional, visões, transações, BD distribuído e orientado a objetos",["t-bdrel"]],
+  ["ti","SQL e administração/tuning de MySQL, SQL Server e Postgres",["t-sql"]],
+  ["ti","Eng. de software: ciclo de vida, requisitos, testes, gerência de configuração, métricas e estimativas"],
+  ["rlm","Algoritmos e fluxogramas; contagem e probabilidade",["l-prob"]],
+  ["port","Coesão, coerência e semântica"],
+  ["port","Redação 3: dissertação cronometrada"]]},
+ {d:"Semana 10 · 30/11 – 06/12",t:"Governança e projetos (versões do edital)",i:[
+  ["ti","ITIL v3: desenho, transição, operação e melhoria contínua de serviços"],
+  ["ti","COBIT 4.1: domínios, processos e modelo de maturidade"],
+  ["ti","PMBOK 5: conceitos e ciclo de vida de projeto"],
+  ["ti","IN 04/2010 MPOG/SLTI: contratação de soluções de TI"],
+  ["adm","Lei 14.133/21, Governo Digital (Lei 14.129) e gestão documental (Lei 8.159)"],
+  ["port","Reescrita de frases e variação linguística"]]},
  {d:"Semana 11 · 07/12 – 13/12",t:"Simulado 1 e revisão",i:[
-  ["sim","Simulado completo de 100 questões cronometrado (4h)"],
+  ["sim","Simulado completo: 60 questões + redação em 4h"],
   ["sim","Anotar erros por tema no caderno"],
-  ["ti","Revisar redes, SO e Linux (os de maior peso)"],
-  ["port","Revisar os 3 temas de Português com mais erros"],
-  ["adm","Revisar Lei 8.112/90 inteira (lei seca)"]]},
+  ["ti","Revisar redes e segurança (maior peso)"],
+  ["adm","Ética (Decretos 1.171/94 e 6.029/07), IFES e Estatuto/Regimento da UFBA"],
+  ["rlm","Matrizes, sistemas lineares e interpretação de tabelas e gráficos"]]},
  {d:"Semana 12 · 14/12 – 20/12",t:"Simulado 2 e ajuste final",i:[
   ["sim","Simulado 2 completo, de preferência com questões da banca Instituto Avalia"],
   ["sim","Comparar com o simulado 1 e reforçar os temas que não melhoraram"],
-  ["ti","Revisar segurança, BD e virtualização"],
+  ["ti","Revisar governança, infraestrutura e banco de dados"],
   ["rlm","Revisão geral de RLM com 30 questões"],
-  ["sim","Conferir o conteúdo do edital novo e ajustar o que faltar"]]}
+  ["adm","Revisar Lei 8.112/90 inteira (lei seca)"]]}
 ];
 var UFBA_ADM_W=[
  {d:"Semana 1 · 28/09 – 04/10",t:"Estado, governo e organização da Adm. Pública",i:[
@@ -369,13 +372,13 @@ function table(head,rows){return '<div class="tscroll"><table><thead><tr>'+head.
 function linkNote(title,links,p){return '<section class="note"><h2>'+title+'</h2><ul class="links">'+links.map(function(l){return '<li><a href="'+l[0]+'" target="_blank" rel="noopener">'+l[1]+'</a></li>';}).join("")+'</ul>'+(p?'<p>'+p+'</p>':'')+'</section>';}
 function viewUFBATI(tab){
   return '<header><div class="eyebrow">Concurso UFBA nº 007/2026 · Técnico de Tecnologia da Informação · nível D · Bloco 3</div><h1>Plano de estudos: 12 semanas</h1>'+
-  '<p class="lede">Baseado no Edital nº 7/2026 da UFBA (banca Instituto Avalia) e na prova de Técnico de TI de 2016. Apenas 4 vagas. Vencimento inicial de R$ 3.181,39 + auxílio-alimentação de R$ 1.192. Requisito: Médio Profissionalizante ou Médio Completo + curso técnico na área de TI.</p>'+
-  '<p class="lede" style="color:var(--amber)">Atenção: o Anexo II do edital não trouxe o conteúdo de Conhecimentos Específicos deste cargo (só o comum + Raciocínio Lógico). O plano abaixo usa a prova anterior de 2016 como referência até sair uma errata.</p></header>'+
-  '<div class="top"><section class="panel"><h2>Peso de cada disciplina na prova</h2><div class="weights">'+
-  wrow("Conhecimentos de TI",50,50,"var(--ti)")+wrow("Português",20,50,"var(--port)")+wrow("Administração Pública",20,50,"var(--adm)")+wrow("Raciocínio Lógico",10,50,"var(--rlm)")+
+  '<p class="lede">Baseado no Edital nº 7/2026 da UFBA (banca Instituto Avalia) e no Anexo II retificado (Retificação nº 1, DOU de 29/09/2026). Prova: 60 questões objetivas + redação, no turno da manhã. Apenas 4 vagas. Vencimento inicial de R$ 3.181,39 + auxílio-alimentação de R$ 1.192. Requisito: Médio Profissionalizante ou Médio Completo + curso técnico na área de TI.</p>'+
+  '</header>'+
+  '<div class="top"><section class="panel"><h2>Pontos de cada parte da prova</h2><div class="weights">'+
+  wrow("Conhecimentos Específicos (30 × 2 pts)",60,60,"var(--ti)")+wrow("Redação",60,60,"var(--port)")+wrow("Língua Portuguesa (12)",12,60,"var(--port)")+wrow("Administração Pública (12)",12,60,"var(--adm)")+wrow("Raciocínio Lógico (6)",6,60,"var(--rlm)")+
   '</div><h2>Rotina sugerida (~12h por semana)</h2><ul class="routine"><li>Seg a sex: 1h30 de TI + 30 min de Português, Adm. ou RLM</li><li>Sábado: 2h de questões da semana</li><li>Domingo: descanso ou atraso</li></ul></section>'+progressPanel(tab)+'</div>'+
   groupsHTML(tab)+
-  linkNote("Material de apoio",[["https://concursos.ufba.br","Portal de concursos da UFBA (edital nº 007/2026 e retificações)"],["https://concursos.ufba.br/sites/concursos.ufba.br/files/tecnicos/prova_tecnico_de_tecnologia_da_informacao.pdf","Prova anterior de Técnico de TI da UFBA (2016)"],["https://concursos.ufba.br/concursos-anteriores-tecnicos","Concursos anteriores de técnicos da UFBA"]],"Só 4 vagas neste cargo — decida a inscrição até 29/10/2026 comparando com a aba de Assistente em Administração.");}
+  linkNote("Material de apoio",[["https://concursos.ufba.br","Portal de concursos da UFBA (edital nº 007/2026 e retificações)"],["https://arquivos-site.avalia.org.br/publicacoes/e210a575-f3ed-427d-a331-b7264c8df788.pdf","Anexo II retificado: conteúdos programáticos"],["https://concursos.ufba.br/sites/concursos.ufba.br/files/tecnicos/prova_tecnico_de_tecnologia_da_informacao.pdf","Prova anterior de Técnico de TI da UFBA (2016)"],["https://concursos.ufba.br/concursos-anteriores-tecnicos","Concursos anteriores de técnicos da UFBA"]],"Só 4 vagas neste cargo — decida a inscrição até 29/10/2026 comparando com a aba de Assistente em Administração.");}
 function viewUFBAADM(tab){
   return '<header><div class="eyebrow">Concurso UFBA nº 007/2026 · Assistente em Administração · nível D · Bloco 1</div><h1>Plano de estudos: 12 semanas</h1>'+
   '<p class="lede">Baseado no Edital nº 7/2026 da UFBA (banca Instituto Avalia). 94 vagas de Assistente em Administração — bem mais que as 4 do Técnico de TI. Vencimento inicial de R$ 3.181,39 + auxílio-alimentação de R$ 1.192. Requisito: apenas Ensino Médio completo, sem curso técnico específico.</p></header>'+
