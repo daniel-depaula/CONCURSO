@@ -92,6 +92,10 @@ ul.items{list-style:none;margin:0;padding:0;display:grid;gap:6px}
 .itext .t{font-size:15px}
 .meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .also{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.notas{display:flex;flex-wrap:wrap;gap:8px 16px;margin:6px 0 2px 28px;font-size:13px;color:var(--muted)}
+.notas label{display:flex;align-items:center;gap:6px}
+.notas input{width:4.6em;font:inherit;font-variant-numeric:tabular-nums;padding:3px 6px;border:1px solid var(--line);border-radius:6px;background:transparent;color:inherit}
+.notas input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 .items input:checked + .itext .t{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line)}
 .note{background:var(--amber-soft);border:1px solid var(--line);border-radius:10px;padding:16px 20px;display:grid;gap:8px}
 .note h2{font-family:var(--display);font-weight:600;font-size:18px;margin:0}
@@ -365,6 +369,9 @@ var TABS=[
 var state={done:[]};
 try{state=JSON.parse(document.getElementById("state").textContent)||state;}catch(e){}
 var done=new Set(state.done||[]);
+var notas=state.notas||{};
+function notaKey(tab,txt){var m=/^Redação (\d+)/.exec(txt);if(m)return tab.id+"-r"+m[1];if(/^Simulado completo/.test(txt))return tab.id+"-s1";if(/^Simulado 2 completo/.test(txt))return tab.id+"-s2";return null;}
+function notaHTML(k){var n=notas[k]||{};function f(campo,rot){var id="n-"+k+"-"+campo;return '<label for="'+id+'">'+rot+' <input type="number" inputmode="decimal" min="0" max="60" step="0.5" id="'+id+'" data-nota="'+k+'" data-campo="'+campo+'" value="'+(n[campo]!=null?n[campo]:"")+'" placeholder="—"> /60</label>';}return '<div class="notas">'+f("ia","Nota do Claude")+f("hu","Nota humana")+'</div>';}
 var ITEMS={},KEYTABS={},TABNAME={"ufba-ti":"UFBA · TI","ufba-adm":"UFBA · Adm",bacen:"Bacen",bnb:"BNB"};
 TABS.forEach(function(t){t.groups.forEach(function(g,gi){g.i.forEach(function(it,ii){var id=gid(t,gi,ii);var ks=it[2]||[id];ITEMS[id]={keys:ks,tab:t.id};ks.forEach(function(k){(KEYTABS[k]=KEYTABS[k]||{})[t.id]=1;});});});});
 function migrate(){Object.keys(ITEMS).forEach(function(id){var it=ITEMS[id];if(it.keys[0]!==id&&done.has(id)){it.keys.forEach(function(k){done.add(k);});done.delete(id);}});}
@@ -386,7 +393,7 @@ function groupsHTML(tab){var h='<div class="weeks">';
   tab.groups.forEach(function(g,gi){var c=0;g.i.forEach(function(_,ii){if(isDone(gid(tab,gi,ii)))c++;});
     h+='<section class="week'+(c===g.i.length?" done":"")+'"><div class="whead"><div><div class="wnum">'+esc(g.d)+'</div><h3 class="wtitle">'+esc(g.t)+'</h3></div><span class="wcount">'+c+'/'+g.i.length+'</span></div><ul class="items">';
     g.i.forEach(function(it,ii){var id=gid(tab,gi,ii);
-      h+='<li><label for="t'+id+'"><input type="checkbox" id="t'+id+'" data-id="'+id+'"'+(isDone(id)?" checked":"")+'><span class="itext"><span class="t">'+esc(it[1])+'</span><span class="meta"><span class="chip '+TAG[it[0]][1]+'">'+TAG[it[0]][0]+'</span>'+(alsoIn(id).length?'<span class="also">↔ também em '+alsoIn(id).join(", ")+'</span>':'')+'</span></span></label></li>';});
+      h+='<li><label for="t'+id+'"><input type="checkbox" id="t'+id+'" data-id="'+id+'"'+(isDone(id)?" checked":"")+'><span class="itext"><span class="t">'+esc(it[1])+'</span><span class="meta"><span class="chip '+TAG[it[0]][1]+'">'+TAG[it[0]][0]+'</span>'+(alsoIn(id).length?'<span class="also">↔ também em '+alsoIn(id).join(", ")+'</span>':'')+'</span></span></label>'+(notaKey(tab,it[1])?notaHTML(notaKey(tab,it[1])):'')+'</li>';});
     h+='</ul></section>';});
   return h+'</div>';}
 function facts(rows){return '<dl class="facts">'+rows.map(function(r){return '<div><dt>'+r[0]+'</dt><dd>'+r[1]+'</dd></div>';}).join("")+'</dl>';}
@@ -444,10 +451,10 @@ function setStatus(m){statusMsg=m;var el=document.getElementById("status");if(el
 var LS_KEY="concursos-progresso",LS_CFG="concursos-sync",FILE="progresso.json",lastUpdated=0,remoteSha=null;
 var DEF={repo:"daniel-depaula/CONCURSO",branch:"master",token:""};
 function cfg(){try{var c=JSON.parse(localStorage.getItem(LS_CFG)||"{}");return{repo:c.repo||DEF.repo,branch:c.branch||DEF.branch,token:c.token||""};}catch(e){return{repo:DEF.repo,branch:DEF.branch,token:""};}}
-function snapshot(){return{done:Array.from(done).sort(),updatedAt:Date.now()};}
+function snapshot(){return{done:Array.from(done).sort(),notas:notas,updatedAt:Date.now()};}
 function saveLocal(snap){try{localStorage.setItem(LS_KEY,JSON.stringify(snap));}catch(e){}}
 function loadLocal(){try{var s=JSON.parse(localStorage.getItem(LS_KEY)||"null");if(s&&s.done)return s;}catch(e){}return null;}
-function applySnap(s){done=new Set(s.done||[]);migrate();lastUpdated=s.updatedAt||0;}
+function applySnap(s){done=new Set(s.done||[]);notas=s.notas||{};migrate();lastUpdated=s.updatedAt||0;}
 function headers(){var h={"Accept":"application/vnd.github+json"};var t=cfg().token;if(t)h.Authorization="Bearer "+t;return h;}
 function contentsUrl(){return "https://api.github.com/repos/"+cfg().repo+"/contents/"+FILE;}
 function b64enc(str){return btoa(unescape(encodeURIComponent(str)));}
@@ -513,7 +520,9 @@ document.addEventListener("click",function(e){
   var nb=document.querySelector('[data-tab="'+cur+'"]');if(nb)nb.focus();
 });
 document.addEventListener("change",function(e){
-  var t=e.target;if(!t||!t.dataset||!t.dataset.id)return;
+  var t=e.target;
+  if(t&&t.dataset&&t.dataset.nota){var k=t.dataset.nota,c=t.dataset.campo,v=t.value.trim().replace(",",".");notas[k]=notas[k]||{};if(v===""){delete notas[k][c];}else{var x=Math.max(0,Math.min(60,Number(v)));if(isNaN(x)){t.value="";return;}notas[k][c]=x;t.value=x;}schedule();return;}
+  if(!t||!t.dataset||!t.dataset.id)return;
   ITEMS[t.dataset.id].keys.forEach(function(k){if(t.checked)done.add(k);else done.delete(k);});
   var y=window.scrollY;render();window.scrollTo(0,y);
   var el=document.getElementById("t"+t.dataset.id);if(el)el.focus({preventScroll:true});
